@@ -15,5 +15,9 @@ Neovim 0.5
 ```scoop install neofetch```
 4. Install neovim
 ```choco install neovim```
-5. Put all files into
+5. Put `coc-settings.json` & `init.vim` into
 ``` C:\Users\{username}\AppData\Local\nvim\```
+6. In windows terminal `ctrl + ,` & copy json over
+7. In powershell   
+`notepad $PROFILE` copy over and  
+`. $PROFILE` 
