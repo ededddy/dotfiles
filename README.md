@@ -1,5 +1,8 @@
 # Dotfiles
 
+- I used other's config and added few stuff to my own use case. Check his repo out.
+- https://github.com/craftzdog/dotfiles-public
+
 # Environment
 
 WSL 2 Ubuntu 18.04
