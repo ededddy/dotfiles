@@ -1,13 +1,14 @@
 # Dotfiles
 
-- I used other's config and added few stuff to my own use case. Check his repo out.
+## Referenced Setups
+
 - https://github.com/craftzdog/dotfiles-public
 - https://github.com/jonhoo/configs
-- 
+
 # Environment
 
 WSL 2 Ubuntu 20.04
-Terminal: Windows Terminal
+Terminal: Alacritty
 Shell : fish w/ tmux
 Editor : NeoVim v0.5
 
@@ -16,6 +17,12 @@ Editor : NeoVim v0.5
 - jorgebucaran/fisher
 - jethrokuan/z
 - edc/bass
+
+## Tmux plugins
+
+- [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm)
+- [mattdavis90/base16-tmux](https://github.com/mattdavis90/base16-tmux)
+- base16 theme : gruvbox-dark-hard
 
 ## NeoVim plugins
 

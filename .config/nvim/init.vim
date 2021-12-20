@@ -9,6 +9,9 @@ scriptencoding utf-8
 if !1 | finish | endif
 
 set nocompatible
+set colorcolumn=80
+let base16colorspace=256 
+set relativenumber " Relative line numbers
 set number
 syntax enable
 set fileencodings=utf-8,sjis,euc-jp,latin
@@ -22,10 +25,18 @@ set showcmd
 set cmdheight=1
 set laststatus=2
 set scrolloff=10
+set mouse=a
 set expandtab
 "let loaded_matchparen = 1
 set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
+set ttyfast
+
+" Proper search
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
 
 " incremental substitution (neovim)
 if has('nvim')
@@ -98,13 +109,23 @@ au BufNewFile,BufRead *.tsx setf typescriptreact
 au BufNewFile,BufRead *.md set filetype=markdown
 " Flow
 au BufNewFile,BufRead *.flow set filetype=javascript
+" Python
+au BufNewFile,BufRead *.py set filetype=python
+au BufNewFile,BufRead *.py set filetype=python
+" Rust
+au BufNewFile,BufRead *.rs set filetype=rust
+au BufNewFile,BufRead *.py set filetype=python
 
-set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.md
 
+autocmd FileType rust setlocal shiftwidth=4 tabstop=4
+autocmd Filetype rust set colorcolumn=100
+autocmd FileType toml setlocal shiftwidth=2 tabstop=2
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-
+autocmd FileType py setlocal shiftwidth=2 tabstop=2
+autocmd FileType pyx setlocal shiftwidth=2 tabstop=2
 "}}}
 
 " Imports "{{{
@@ -123,7 +144,6 @@ runtime ./maps.vim
 
 " Syntax theme "{{{
 " ---------------------------------------------------------------------
-
 " true color
 if exists("&termguicolors") && exists("&winblend")
   syntax enable
@@ -133,10 +153,13 @@ if exists("&termguicolors") && exists("&winblend")
   set pumblend=5
   set background=dark
   " Use NeoSolarized
-  let g:neosolarized_termtrans=1
-  runtime ./colors/NeoSolarized.vim
-  colorscheme NeoSolarized
+  " let g:neosolarized_termtrans=1
+  " runtime ./colors/NeoSolarized.vim
+  " colorscheme NeoSolarized
+  colorscheme base16-gruvbox-dark-hard
+  syntax on
 endif
+
 
 "}}}
 
@@ -144,5 +167,21 @@ endif
 " ---------------------------------------------------------------------
 set exrc
 "}}}
+"" Lightline
 
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'readonly', 'filename', 'modified' ] ],
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'percent' ],
+  \              [ 'fileencoding', 'filetype' ] ],
+  \ },
+  \ 'component_function': {
+    \   'filename': 'LightlineFilename'
+  \ },
+\ }
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
 " vim: set foldmethod=marker foldlevel=0:
