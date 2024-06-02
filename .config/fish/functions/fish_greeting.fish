@@ -75,7 +75,7 @@ function fish_greeting
 	echo
 	if test -s ~/todo
 		set_color magenta
-		cat todo | sed 's/^/ /'
+		cat ~/todo | sed 's/^/ /'
 		echo
 	end
 	set_color normal
